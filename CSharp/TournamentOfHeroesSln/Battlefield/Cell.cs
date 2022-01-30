@@ -55,10 +55,10 @@ namespace TournamentOfHeroes
         }
 
         /// <summary>Свойство для типа ланшафта.</summary>
-        public object Terrain { get; set; }
+        public object? Terrain { get; set; }
 
         /// <summary>Свойство для контента (юнита).</summary>
-        public object Content { get; set; }
+        public object? Content { get; set; }
 
         /// <summary>Получение соседей текущей ячейки до заданной глубины.</summary>
         /// <param name="deep">Глубина. Если меньше 1, то принимается равной 1.</param>
@@ -113,16 +113,17 @@ namespace TournamentOfHeroes
         /// <param name="end">Ячейка на которой заканчивается путь.</param>
         /// <returns>Коллекцию ячеек, начинающуюся с текущей и закачивающейся <paramref name="end"/>, если есть путь между ними.<br/>
         /// Иначе <see langword="null"/>.</returns>
-        public ReadOnlyCollection<Cell> GetPath(Cell end)
+        public ReadOnlyCollection<Cell>? GetPath(Cell end)
             => GetPath(this, end);
 
 
         /// <summary>Получение пути от одной ячейки до другой.</summary>
         /// <param name="begin">Ячейка с которой начинается путь.</param>
         /// <param name="end">Ячейка на которой заканчивается путь.</param>
-        /// <returns>Коллекцию ячеек начинающуюся с <paramref name="begin"/> и закачивающейся <paramref name="end"/>? если есть путь между ними.<br/>
+        /// <returns>Коллекцию ячеек начинающуюся с <paramref name="begin"/>
+        /// и закачивающейся <paramref name="end"/>, если есть путь между ними.<br/>
         /// Иначе <see langword="null"/>.</returns>
-        public static ReadOnlyCollection<Cell> GetPath(Cell begin, Cell end)
+        public static ReadOnlyCollection<Cell>? GetPath(Cell begin, Cell end)
         {
             HashSet<Cell> cells = new() { begin };
             Queue<(IEnumerable<Cell> path, Cell cell)> queue = new(new[] { (Enumerable.Repeat(begin, 1), begin) });
@@ -133,17 +134,18 @@ namespace TournamentOfHeroes
                 {
                     return Array.AsReadOnly(curr.path.ToArray());
                 }
-                foreach (var cll in curr.cell.Neighbors)
+                foreach (var cell in curr.cell.Neighbors.OrderBy(c => random.Next()))
                 {
-                    if (cells.Add(cll))
+                    if (cells.Add(cell))
                     {
-                        queue.Enqueue((curr.path.Append(cll), cll));
+                        queue.Enqueue((curr.path.Append(cell), cell));
                     }
                 }
             }
 
             return null;
         }
+        private static readonly Random random = new();
 
         public override string ToString()
             => $"{Index} - ({Row}, {Column})";

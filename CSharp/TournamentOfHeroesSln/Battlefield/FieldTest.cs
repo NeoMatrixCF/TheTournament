@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace TournamentOfHeroes
 {
@@ -7,24 +7,34 @@ namespace TournamentOfHeroes
     {
         public static void Start()
         {
-            var field = new BattleField();
+            BattleField? field = new();
 
-            var path = field[0].GetPath(field[2]);
+            Cell beg = field[0],
+                end = field[2];
+            PathWrite();
 
-            Console.WriteLine(string.Join(Environment.NewLine, path.Select(c => $"{c.Index} - ({c.Row}, {c.Column})")));
+            beg = field[5, 5];
+            end = field[9, 14];
+            PathWrite();
 
+            beg = field[0];
+            end = field[^1];
+            PathWrite();
 
-            path = field[5, 5].GetPath(field[9, 14]);
-            Console.WriteLine();
-            Console.WriteLine(string.Join(Environment.NewLine, path));
+            beg = field[0, 14];
+            end = field[10, 0];
+            PathWrite();
 
-            path = field[0].GetPath(field[field.Count - 1]);
-            Console.WriteLine();
-            Console.WriteLine(string.Join(Environment.NewLine, path));
-
-            path = field[0, 14].GetPath(field[10, 0]);
-            Console.WriteLine();
-            Console.WriteLine(string.Join(Environment.NewLine, path));
+            void PathWrite()
+            {
+                ReadOnlyCollection<Cell>? path = beg.GetPath(end);
+                Console.WriteLine($"Путь от {beg} до {end}:");
+                if (path == null)
+                    Console.WriteLine("Пути нет.");
+                else
+                    Console.WriteLine(string.Join(Environment.NewLine, path));
+            }
         }
+
     }
 }

@@ -194,7 +194,7 @@ namespace TournamentOfHeroes
 
             return matrix;
 
-            (int index, int row, int column) GetTupleIndex(int row, int column) => (GetIndex(row, column), row, column);
+            static (int index, int row, int column) GetTupleIndex(int row, int column) => (GetIndex(row, column), row, column);
         }
 
         /// <inheritdoc cref="IEnumerable{Cell}.GetEnumerator"/>
