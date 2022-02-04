@@ -1,19 +1,15 @@
-﻿<Window x:Class="TournamentOfHeroes.MainWindow"
+﻿<Window x:Class="TournamentOfHeroes.ButtonCellWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TournamentOfHeroes"
         xmlns:cc="clr-namespace:WpfCC;assembly=WpfCC"
-        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-        xmlns:toh="clr-namespace:TournamentOfHeroes;assembly=Battlefield"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ButtonCellWindow" Height="450" Width="800">
     <UniformGrid Columns="1" Margin="50">
-        <cc:BattleControl>
-            <ItemsControl.ItemsSource>
-                <toh:BattleField/>
-            </ItemsControl.ItemsSource>
-        </cc:BattleControl>
+        <cc:HexagonButton>
+        </cc:HexagonButton>
+        <cc:HexagonCell/>
     </UniformGrid>
 </Window>

@@ -6,8 +6,6 @@ using System.Linq;
 
 namespace TournamentOfHeroes
 {
-    //TODO: Нужно картинку поля предоставить через ГитХаб.
-
     /// <summary>Поле битвы.</summary>
     /// <remarks>Пока реализована только постоянная конфигурация:
     /// <see href="https://www.cyberforum.ru/attachments/1266235d1625492691"/>.</remarks>

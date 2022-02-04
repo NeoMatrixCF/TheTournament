@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfCC">
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.StaticBackground}" Color="#FFDDDDDD"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.StaticBorder}" Color="#FF707070"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.StaticForeground}" Color="Black"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.MouseOverBackground}" Color="#FFBEE6FD"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.MouseOverBorder}" Color="#FF3C7FB1"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.PressedBackground}" Color="#FFC4E5F6"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.PressedBorder}" Color="#FF2C628B"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.DisabledBackground}" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.DisabledBorder}" Color="#FFADB2B5"/>
+    <SolidColorBrush x:Key="{x:Static local:HexagonButton.DisabledForeground}" Color="#FF838383"/>
+</ResourceDictionary>

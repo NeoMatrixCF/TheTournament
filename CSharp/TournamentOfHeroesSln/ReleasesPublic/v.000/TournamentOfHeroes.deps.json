@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "TournamentOfHeroes/1.0.0": {
+        "dependencies": {
+          "Battlefield": "1.0.0",
+          "WpfCC": "1.0.0"
+        },
+        "runtime": {
+          "TournamentOfHeroes.dll": {}
+        }
+      },
+      "Battlefield/1.0.0": {
+        "runtime": {
+          "Battlefield.dll": {}
+        }
+      },
+      "WpfCC/1.0.0": {
+        "dependencies": {
+          "Battlefield": "1.0.0"
+        },
+        "runtime": {
+          "WpfCC.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TournamentOfHeroes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Battlefield/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WpfCC/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

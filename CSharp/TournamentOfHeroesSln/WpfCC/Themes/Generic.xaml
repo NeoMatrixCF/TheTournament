@@ -1,0 +1,86 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WpfCC"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <Style TargetType="{x:Type local:BattleControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:BattleControl}">
+                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{x:Static local:HexagonButton.FocusVisual}">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" StrokeDashArray="1 2"
+                               Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                               SnapsToDevicePixels="true" StrokeThickness="1"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type local:HexagonButton}">
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static local:HexagonButton.FocusVisual}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static local:HexagonButton.StaticBackground}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:HexagonButton.StaticBorder}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static local:HexagonButton.StaticForeground}}"/>
+        <Setter Property="local:SizeToThicknessConverter.SizeToBorderThicknessRatio" Value="0.1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:HexagonButton}">
+                    <Grid>
+                        <Canvas SnapsToDevicePixels="true">
+                            <Polygon x:Name="border"
+                                     Points="{TemplateBinding BorderPoints}"
+                                     Fill="{TemplateBinding BorderBrush}"
+                                     StrokeThickness="0"
+                                     Stroke="{x:Null}"/>
+                            <Polygon x:Name="polygon"
+                                     Points="{TemplateBinding ContentPoints}"
+                                     Fill="{TemplateBinding Background}"
+                                     StrokeThickness="0"
+                                     Stroke="{x:Null}"/>
+                        </Canvas>
+                        <ContentPresenter x:Name="contentPresenter"
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="Stroke" TargetName="polygon" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Fill" TargetName="polygon" Value="{DynamicResource {x:Static local:HexagonButton.MouseOverBackground}}"/>
+                            <Setter Property="Fill" TargetName="border" Value="{DynamicResource {x:Static local:HexagonButton.MouseOverBorder}}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Fill" TargetName="polygon" Value="{DynamicResource {x:Static local:HexagonButton.PressedBackground}}"/>
+                            <Setter Property="Fill" TargetName="border" Value="{DynamicResource {x:Static local:HexagonButton.PressedBorder}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="polygon" Value="{DynamicResource {x:Static local:HexagonButton.DisabledBackground}}"/>
+                            <Setter Property="Fill" TargetName="border" Value="{DynamicResource {x:Static local:HexagonButton.DisabledBorder}}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{DynamicResource {x:Static local:HexagonButton.DisabledForeground}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:HexagonCell}" BasedOn="{StaticResource {x:Type local:HexagonButton}}">
+    </Style>
+
+</ResourceDictionary>
