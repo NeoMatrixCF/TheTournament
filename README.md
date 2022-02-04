@@ -1,2 +1,2 @@
 # TheTournament
-This is a project a game like HOMM3.
+This is the project of the game like HoMM3.
